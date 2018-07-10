@@ -5,9 +5,9 @@ session_start();
 $_SESSION['username']=$_POST['username'];
 $_SESSION['password']=$_POST["password"];
 if ($_SESSION['username'] && $_SESSION['password']) {
-	$con=mysqli_connect("localhost","root","") or die("connection failed");
-	mysqli_select_db($con,"hms");
-	// include ("include/connection.php");
+	// $con=mysqli_connect("localhost","root","") or die("connection failed");
+	// mysqli_select_db($con,"hms");
+	include ("include/connection.php");
 	$sql=mysqli_query($con,"select username,password from login_id where username ='".$_SESSION['username']."'");
 	$row=mysqli_num_rows($sql);
 	if($row!=0)

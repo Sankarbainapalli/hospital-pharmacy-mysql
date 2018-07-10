@@ -1,7 +1,8 @@
   <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © Your Website 2018</small>
+           <small>Copyright 2018 © EPIONE All rights reserved</small><br>
+        <a  href="http://askmeguru.com/" style="text-decoration: none;color:white;font-size:12px;">   Designed & Developed by askmeguru.com</a>
         </div>
       </div>
     </footer>
@@ -22,7 +23,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="index.php">Logout</a>
+            <a class="btn btn-primary" href="logout.php">Logout</a>
           </div>
         </div>
       </div>

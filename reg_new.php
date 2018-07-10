@@ -20,33 +20,29 @@ include("include/session.php");
 //  {
     
     require("include/connection.php");
-    $res=mysqli_query($con,"select * from registration_tb where name='$name' ");
+    $res=mysqli_query($conn,"select * from registration_tb where name='$name' ");
             $count=mysqli_num_rows($res);
 //  $a=substr ($name,0,1);
 // $b=substr ($fathername,0,1);
 $m=date('m');
 $d=date('d');
 $y=date('y');
-// $C="C00";
+$C="C00";
 $getid=mysqli_query($con," SELECT * FROM registration_tb ");
 $getpaid=mysqli_num_rows($getid);
 $invalid = str_pad ($getpaid,2,0, STR_PAD_LEFT);
-$patient_id=$d.$m.$y.$invalid;
-// $patient_id=$C.$invalid;
+// $patient_id=$d.$m.$y.$invalid;
+$patient_id=$C.$invalid;
     
-             if($count){
-          echo '<script>alert("name is already exits")</script>';
-          echo '<script>window.location= "register.php"</script>';
-
+             if($count!=0){
+          echo '<script>alert("number is already exits")</script>';
               }else{
 $sql=mysqli_query($con," INSERT INTO registration_tb (name, fathername,mobilenumber,gender,doctorname,amount,patient_id,address,age,date)
 VALUES ('$name','$fathername','$mobilenumber','$gender','$doctor','$amount','$patient_id','$address','$age','$date') ");
 }
 
-if($sql==true){
-    
-$username="epione";
-$password="akki@123";
+$username="Demo888";
+$password="d12345";
 $from = "EPIONE";
 $to = "$mobilenumber"; // A single number or a comma-seperated list of numbers
 $message = "Dear $name\nWe have recieved your payment of Rs.$amount \nRegards\nTeam \nDarapain solutions";
@@ -59,7 +55,6 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $vars);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $result = curl_exec($ch); // This is the result from the API
 curl_close($ch);
-
 // echo '<script>alert("Message has been sent successfully")</script>';
 require('Fpdf/fpdf.php');
 class myPDF extends FPDF{
@@ -143,10 +138,8 @@ $pdf->Cell(180,10,"Authorized Signature",0,0,"R");
 // $pdf->Cell(50,5,"Regd No:",0,0);
 // $pdf->Cell(50,5,"$row",0,0);
 $pdf->output();
-
 echo '<script>alert("Message sent has been success")</script>';
 echo '<script>window.location= "dashboard.php"</script>';
-}
 
 // echo '<script type="text/javascript">';
 // echo 'alert("success")';
@@ -164,5 +157,4 @@ echo '<script>window.location= "dashboard.php"</script>';
 //                                  else {
 //                                  echo '<script>alert("Please enter all the field")</script>';
 // }
-
 ?>
